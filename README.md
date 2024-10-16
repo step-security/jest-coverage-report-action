@@ -279,7 +279,3 @@ If you're running this action multiple times (for instance, when dealing with mo
 with:
     custom-title: Coverage report for backend
 ```
-
-## License
-
-MIT © [step-security Tretjakovas](https://github.com/step-security)
