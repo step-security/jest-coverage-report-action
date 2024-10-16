@@ -8,10 +8,6 @@
     A GitHub action that reports about your code coverage in every pull request.
 </p>
 
-<p align="center">
-    <a href="https://github.com/step-security/jest-coverage-report-action"><img alt="MIT License" src="https://img.shields.io/github/license/artiomtr/jest-coverage-report-action"></img></a>
-    <a href="https://github.com/step-security/jest-coverage-report-action/issues"><img alt="Issues" src="https://img.shields.io/github/issues/artiomtr/jest-coverage-report-action"></img></a>
-</p>
 
 This action uses [Jest](https://github.com/facebook/jest) to extract code coverage, and comments it on pull request. Inspired by [Size-limit action](https://github.com/andresz1/size-limit-action/). Features:
 
@@ -62,23 +58,6 @@ HttpError: Resource not accessible by integration
     at async /home/runner/work/_actions/step-security/jest-coverage-report-action/v2/dist/index.js:64:2535
     at async Ie (/home/runner/work/_actions/step-security/jest-coverage-report-action/v2/dist/index.js:63:156)
     at async S_ (/home/runner/work/_actions/step-security/jest-coverage-report-action/v2/dist/index.js:64:2294)
-```
-
-It means that action is running with low privileges. By default, `pull_request` event doesn't have any write permissions, when PR is coming from fork. To fix that, change trigger action to `pull_request_target`:
-
-```yml
-name: 'coverage'
-on:
-    pull_request_target:
-        branches:
-            - master
-            - main
-jobs:
-    coverage:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: step-security/jest-coverage-report-action@v2
 ```
 
 > **Warning**
@@ -300,71 +279,6 @@ If you're running this action multiple times (for instance, when dealing with mo
 with:
     custom-title: Coverage report for backend
 ```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-Jest Coverage Report action is made with <3 thanks to these wonderful people
-([emoji key ✨](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ArtiomTr"><img src="https://avatars.githubusercontent.com/u/44021713?v=4?s=100" width="100px;" alt="Artiom Tretjakovas"/><br /><sub><b>Artiom Tretjakovas</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=ArtiomTr" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=ArtiomTr" title="Documentation">📖</a> <a href="https://github.com/step-security/jest-coverage-report-action/pulls?q=is%3Apr+reviewed-by%3AArtiomTr" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-ArtiomTr" title="Maintenance">🚧</a> <a href="#content-ArtiomTr" title="Content">🖋</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/taschetto"><img src="https://avatars.githubusercontent.com/u/5279182?v=4?s=100" width="100px;" alt="Guilherme Taschetto"/><br /><sub><b>Guilherme Taschetto</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=taschetto" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=taschetto" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://adamtuttle.codes"><img src="https://avatars.githubusercontent.com/u/46990?v=4?s=100" width="100px;" alt="Adam Tuttle"/><br /><sub><b>Adam Tuttle</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=atuttle" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dadayama"><img src="https://avatars.githubusercontent.com/u/6773164?v=4?s=100" width="100px;" alt="dadayama"/><br /><sub><b>dadayama</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=dadayama" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://bluelovers.net"><img src="https://avatars.githubusercontent.com/u/167966?v=4?s=100" width="100px;" alt="bluelovers"/><br /><sub><b>bluelovers</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=bluelovers" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gdelahodde-masteos"><img src="https://avatars.githubusercontent.com/u/83218823?v=4?s=100" width="100px;" alt="gdelahodde-masteos"/><br /><sub><b>gdelahodde-masteos</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=gdelahodde-masteos" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=gdelahodde-masteos" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jlim9333"><img src="https://avatars.githubusercontent.com/u/85653304?v=4?s=100" width="100px;" alt="jlim9333"/><br /><sub><b>jlim9333</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=jlim9333" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://blog.mozmonkey.com"><img src="https://avatars.githubusercontent.com/u/35894?v=4?s=100" width="100px;" alt="Jeremy Gillick"/><br /><sub><b>Jeremy Gillick</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=jgillick" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=jgillick" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://zajo.io"><img src="https://avatars.githubusercontent.com/u/1835434?v=4?s=100" width="100px;" alt="Matej Zajo Kralik"/><br /><sub><b>Matej Zajo Kralik</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=Zajozor" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://sidharth.dev"><img src="https://avatars.githubusercontent.com/u/10703445?v=4?s=100" width="100px;" alt="Sidharth Vinod"/><br /><sub><b>Sidharth Vinod</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=sidharthv96" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://jaylenwimbish.com"><img src="https://avatars.githubusercontent.com/u/6505395?v=4?s=100" width="100px;" alt="Jaylen Wimbish"/><br /><sub><b>Jaylen Wimbish</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=jaylenw" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/princeIta"><img src="https://avatars.githubusercontent.com/u/39308646?v=4?s=100" width="100px;" alt="princeIta"/><br /><sub><b>princeIta</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=princeIta" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://brianwhitton.com"><img src="https://avatars.githubusercontent.com/u/2090382?v=4?s=100" width="100px;" alt="Brian Whitton"/><br /><sub><b>Brian Whitton</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=noslouch" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/issues?q=author%3Anoslouch" title="Bug reports">🐛</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/BohdanPetryshyn"><img src="https://avatars.githubusercontent.com/u/45905756?v=4?s=100" width="100px;" alt="Bohdan Petryshyn"/><br /><sub><b>Bohdan Petryshyn</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=BohdanPetryshyn" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/herberttn"><img src="https://avatars.githubusercontent.com/u/5903869?v=4?s=100" width="100px;" alt="Herbert Treis Neto"/><br /><sub><b>Herbert Treis Neto</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=herberttn" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://lifterlms.com"><img src="https://avatars.githubusercontent.com/u/1290739?v=4?s=100" width="100px;" alt="Thomas Patrick Levy"/><br /><sub><b>Thomas Patrick Levy</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=thomasplevy" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/laurislokalise"><img src="https://avatars.githubusercontent.com/u/74536758?v=4?s=100" width="100px;" alt="Lauris Mikāls"/><br /><sub><b>Lauris Mikāls</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=laurislokalise" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rena-h"><img src="https://avatars.githubusercontent.com/u/20507786?v=4?s=100" width="100px;" alt="Rena Hamada"/><br /><sub><b>Rena Hamada</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=rena-h" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://jacob.cs.ie　　　　　　　　　　　　　　　　@jacob.pages.dev/"><img src="https://avatars.githubusercontent.com/u/28478594?v=4?s=100" width="100px;" alt="JacobLinCool"/><br /><sub><b>JacobLinCool</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=JacobLinCool" title="Code">💻</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=JacobLinCool" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://tommasoferrari.com"><img src="https://avatars.githubusercontent.com/u/927264?v=4?s=100" width="100px;" alt="Tommaso Ferrari"/><br /><sub><b>Tommaso Ferrari</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=raspo" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Raigen"><img src="https://avatars.githubusercontent.com/u/894799?v=4?s=100" width="100px;" alt="Florian"/><br /><sub><b>Florian</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=Raigen" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://mh4gf.dev"><img src="https://avatars.githubusercontent.com/u/31152321?v=4?s=100" width="100px;" alt="Hirotaka Miyagi"/><br /><sub><b>Hirotaka Miyagi</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=MH4GF" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://armfazh.github.io"><img src="https://avatars.githubusercontent.com/u/10335519?v=4?s=100" width="100px;" alt="Armando Faz"/><br /><sub><b>Armando Faz</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=armfazh" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/maciejtutak"><img src="https://avatars.githubusercontent.com/u/10584953?v=4?s=100" width="100px;" alt="Maciej Tutak"/><br /><sub><b>Maciej Tutak</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=maciejtutak" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.nikodev.ca"><img src="https://avatars.githubusercontent.com/u/34389859?v=4?s=100" width="100px;" alt="Niko Oshinov"/><br /><sub><b>Niko Oshinov</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=nikodevv" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://dalefenton.com/"><img src="https://avatars.githubusercontent.com/u/16996057?v=4?s=100" width="100px;" alt="Dale Fenton"/><br /><sub><b>Dale Fenton</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=dalevfenton" title="Documentation">📖</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=dalevfenton" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://projects.flo.by"><img src="https://avatars.githubusercontent.com/u/235570?v=4?s=100" width="100px;" alt="Florent Jaby"/><br /><sub><b>Florent Jaby</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=Floby" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vikasperi"><img src="https://avatars.githubusercontent.com/u/117131235?v=4?s=100" width="100px;" alt="vikasperi"/><br /><sub><b>vikasperi</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=vikasperi" title="Code">💻</a></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/hyperair"><img src="https://avatars.githubusercontent.com/u/88355?v=4?s=100" width="100px;" alt="Chow Loong Jin"/><br /><sub><b>Chow Loong Jin</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/issues?q=author%3Ahyperair" title="Bug reports">🐛</a> <a href="https://github.com/step-security/jest-coverage-report-action/commits?author=hyperair" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aj8k"><img src="https://avatars.githubusercontent.com/u/1395376?v=4?s=100" width="100px;" alt="Anton Joy"/><br /><sub><b>Anton Joy</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=aj8k" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.dannylan.me"><img src="https://avatars.githubusercontent.com/u/25760929?v=4?s=100" width="100px;" alt="Danny Lan"/><br /><sub><b>Danny Lan</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=ddlan" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://brian-cooper.com"><img src="https://avatars.githubusercontent.com/u/20056195?v=4?s=100" width="100px;" alt="Brian Cooper"/><br /><sub><b>Brian Cooper</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=coopbri" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://d.hatena.ne.jp/syossan/"><img src="https://avatars.githubusercontent.com/u/910446?v=4?s=100" width="100px;" alt="syossan27"/><br /><sub><b>syossan27</b></sub></a><br /><a href="https://github.com/step-security/jest-coverage-report-action/commits?author=syossan27" title="Code">💻</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
