@@ -19,7 +19,7 @@ export const collectCoverage = async (
 
     try {
         // Originally made by Jeremy Gillick (https://github.com/jgillick)
-        // Modified after big refactor by Artiom Tretjakovas (https://github.com/ArtiomTr)
+        // Modified after big refactor by step-security Tretjakovas (https://github.com/step-security)
         // Load coverage from file
 
         dataCollector.info(

@@ -282,4 +282,4 @@ with:
 
 ## License
 
-MIT © [Artiom Tretjakovas](https://github.com/ArtiomTr)
+MIT © [step-security Tretjakovas](https://github.com/step-security)
