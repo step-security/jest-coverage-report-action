@@ -16,8 +16,13 @@ jobs:
         runs-on: ubuntu-latest
         name: Coverage report
         steps:
+            - name: Harden Runner
+              uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+              with:
+                egress-policy: audit
+
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
             - name: Test coverage
               uses: ./ # Uses an action in the root directory
               with:
