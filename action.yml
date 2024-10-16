@@ -56,22 +56,5 @@ outputs:
         description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
         value: ${{ steps.main.outputs.report }}
 runs:
-    using: composite
-    steps:
-        - run: $GITHUB_ACTION_PATH/run.sh
-          shell: bash
-          id: main
-          env:
-              INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
-              INPUT_TEST-SCRIPT: ${{ inputs.test-script }}
-              INPUT_THRESHOLD: ${{ inputs.threshold }}
-              INPUT_WORKING-DIRECTORY: ${{ inputs.working-directory }}
-              INPUT_ICONS: ${{ inputs.icons }}
-              INPUT_ANNOTATIONS: ${{ inputs.annotations }}
-              INPUT_PACKAGE-MANAGER: ${{ inputs.package-manager }}
-              INPUT_SKIP-STEP: ${{ inputs.skip-step }}
-              INPUT_CUSTOM-TITLE: ${{ inputs.custom-title }}
-              INPUT_COVERAGE-FILE: ${{ inputs.coverage-file }}
-              INPUT_BASE-COVERAGE-FILE: ${{ inputs.base-coverage-file }}
-              INPUT_PRNUMBER: ${{ inputs.prnumber }}
-              INPUT_OUTPUT: ${{ inputs.output }}
+    using: 'node20'
+    main: 'dist/index.js'
