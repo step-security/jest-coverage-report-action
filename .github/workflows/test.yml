@@ -1,0 +1,25 @@
+name: Coverage
+
+# Skip job run if PR updated
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+on:
+    pull_request_target:
+        paths-ignore:
+            - 'docs/**'
+    workflow_dispatch:
+
+jobs:
+    coverage:
+        runs-on: ubuntu-latest
+        name: Coverage report
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Test coverage
+              uses: ./ # Uses an action in the root directory
+              with:
+                  annotations: failed-tests
+                  test-script: npm run test:coverage

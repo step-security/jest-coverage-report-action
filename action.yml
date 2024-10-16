@@ -1,0 +1,60 @@
+name: 'Jest coverage report'
+description: 'Track your code coverage in each pull request.'
+author: 'Step Security'
+branding:
+    icon: 'activity'
+    color: 'gray-dark'
+inputs:
+    github-token:
+        required: true
+        description: 'A github access token'
+        default: ${{ github.token }}
+    test-script:
+        required: false
+        description: 'A custom npm script to get coverage'
+        default: npx jest
+    threshold:
+        required: false
+        description: 'Coverage threshold. If total coverage is less than threshold, PR will be rejected'
+    working-directory:
+        required: false
+        description: 'Custom working directory'
+    icons:
+        required: false
+        description: 'Which icons to use. Available choices: emoji, ascii'
+        default: emoji
+    annotations:
+        required: false
+        description: 'What type of annotations show. Options: none, coverage, failed-tests, all'
+        default: all
+    package-manager:
+        required: false
+        description: 'Which package manager to use; can be `npm`, `yarn`, `pnpm`, or `bun`'
+        default: 'npm'
+    skip-step:
+        required: false
+        description: '`none` for running all steps, `install` to skip installing dependencies or `all` to skip installing dependencies and running the test script'
+        default: 'none'
+    custom-title:
+        required: false
+        description: 'Sets the title of the coverage report comment in Github.'
+    coverage-file:
+        required: false
+        description: Path to file the a previously generated report.json file. (bypasses running the test again)
+    base-coverage-file:
+        required: false
+        description: Path to the report.json file to compare against. This should be from the branch the PR is merging into.
+    prnumber:
+        required: false
+        description: Pull Request number for this commit. Use if your action is running in a PR, but non on the pull_request event, so that you do not get multiple comments.
+    output:
+        required: false
+        description: What output should action produce? `comment` - add comment to PR, `report-markdown` - report markdown text in "outputs.report".
+        default: comment
+outputs:
+    report:
+        description: Generated markdown report. Exists only if input option "output" is set to "report-markdown".
+        value: ${{ steps.main.outputs.report }}
+runs:
+    using: 'node20'
+    main: 'dist/index.js'
