@@ -48,7 +48,7 @@
         "c12": "^0.2.13",
         "esbuild": "^0.12.24",
         "eslint": "^7.17.0",
-        "eslint-config-prettier": "^7.1.0",
+        "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-prettier": "^3.3.1",
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "jest": "^27.2.1",
