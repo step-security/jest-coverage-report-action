@@ -16,7 +16,7 @@ on:
 
 jobs:
   audit-fix:
-    uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@v1
+    uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@fix_Audit-fix-force
     with:
       force: false
       base_branch: main
