@@ -37,7 +37,7 @@ jobs:
               run: npm instal
 
             - name: Install deps and build (with cache)
-              uses: bahmutov/npm-install@e5c7e14408aa6089501de32bd16123b41738047e # v1.10.2
+              uses: bahmutov/npm-install@6cee6086f1bf4467050e9a51e94bfb71b44cbc39 # v1.10.8
 
             - name: Lint
               run: npm run lint
