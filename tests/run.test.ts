@@ -426,8 +426,12 @@ describe('run', () => {
     });
 
     describe('coverageAnnotations', () => {
-        const createCoverageAnnotationsMock = jest.mocked(createCoverageAnnotations);
-        const formatCoverageAnnotationsMock = jest.mocked(formatCoverageAnnotations);
+        const createCoverageAnnotationsMock = jest.mocked(
+            createCoverageAnnotations
+        );
+        const formatCoverageAnnotationsMock = jest.mocked(
+            formatCoverageAnnotations
+        );
 
         beforeEach(() => {
             createCoverageAnnotationsMock.mockClear();
