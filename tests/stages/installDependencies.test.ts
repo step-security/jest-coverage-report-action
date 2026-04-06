@@ -1,7 +1,6 @@
 import { sep } from 'path';
 
 import { exec } from '@actions/exec';
-import { mocked } from 'ts-jest/utils';
 
 import { installDependencies } from '../../src/stages/installDependencies';
 import { removeDirectory } from '../../src/utils/removeDirectory';
@@ -9,8 +8,8 @@ import { removeDirectory } from '../../src/utils/removeDirectory';
 jest.mock('../../src/utils/removeDirectory');
 
 const clearMocks = () => {
-    mocked(exec).mockClear();
-    mocked(removeDirectory).mockClear();
+    jest.mocked(exec).mockClear();
+    jest.mocked(removeDirectory).mockClear();
 };
 
 beforeEach(clearMocks);
@@ -78,7 +77,7 @@ describe('installDependencies', () => {
 
     it("shouldn't install dependencies, if node_modules directory deletion failed", async () => {
         try {
-            mocked(removeDirectory).mockImplementationOnce(() => {
+            jest.mocked(removeDirectory).mockImplementationOnce(() => {
                 throw 0;
             });
             await installDependencies();

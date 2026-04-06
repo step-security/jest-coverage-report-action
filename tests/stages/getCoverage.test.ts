@@ -2,7 +2,6 @@ import { sep } from 'path';
 
 import { exec } from '@actions/exec';
 import { readFile } from 'fs-extra';
-import { mocked } from 'ts-jest/utils';
 
 import { getCoverage } from '../../src/stages/getCoverage';
 import { ActionError } from '../../src/typings/ActionError';
@@ -27,9 +26,9 @@ const defaultOptions: Options = {
 };
 
 const clearMocks = () => {
-    mocked(exec).mockClear();
-    mocked(readFile).mockClear();
-    mocked(removeDirectory).mockClear();
+    jest.mocked(exec).mockClear();
+    jest.mocked(readFile).mockClear();
+    jest.mocked(removeDirectory).mockClear();
 };
 
 beforeEach(clearMocks);

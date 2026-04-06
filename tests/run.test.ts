@@ -2,7 +2,6 @@ import * as allCore from '@actions/core';
 import * as all from '@actions/github';
 import { getOctokit } from '@actions/github';
 import { loadConfig } from 'c12';
-import { mocked } from 'ts-jest/utils';
 
 import { Annotation } from '../src/annotations/Annotation';
 import { createCoverageAnnotations } from '../src/annotations/createCoverageAnnotations';
@@ -223,13 +222,13 @@ jest.mock('../src/annotations/createCoverageAnnotations.ts');
 jest.mock('../src/format/annotations/formatFailedTestsAnnotations.ts');
 jest.mock('../src/format/annotations/formatCoverageAnnotations.ts');
 
-const getOptionsMock = mocked(getOptions);
-const getCoverageMock = mocked(getCoverage);
-const switchBranchMock = mocked(switchBranch);
-const getCurrentBranchMock = mocked(getCurrentBranch);
-const checkoutRefMock = mocked(checkoutRef);
-const createReportMock = mocked(createReport);
-const loadConfigMock = mocked(loadConfig);
+const getOptionsMock = jest.mocked(getOptions);
+const getCoverageMock = jest.mocked(getCoverage);
+const switchBranchMock = jest.mocked(switchBranch);
+const getCurrentBranchMock = jest.mocked(getCurrentBranch);
+const checkoutRefMock = jest.mocked(checkoutRef);
+const createReportMock = jest.mocked(createReport);
+const loadConfigMock = jest.mocked(loadConfig);
 
 (getOctokit as jest.Mock<any, any>).mockReturnValue({
     rest: {
@@ -395,11 +394,11 @@ describe('run', () => {
     });
 
     describe('failedAnnotations', () => {
-        const createFailedTestsAnnotationsMock = mocked(
+        const createFailedTestsAnnotationsMock = jest.mocked(
             createFailedTestsAnnotations
         );
 
-        const formatFailedTestsAnnotationsMock = mocked(
+        const formatFailedTestsAnnotationsMock = jest.mocked(
             formatFailedTestsAnnotations
         );
 
@@ -427,8 +426,8 @@ describe('run', () => {
     });
 
     describe('coverageAnnotations', () => {
-        const createCoverageAnnotationsMock = mocked(createCoverageAnnotations);
-        const formatCoverageAnnotationsMock = mocked(formatCoverageAnnotations);
+        const createCoverageAnnotationsMock = jest.mocked(createCoverageAnnotations);
+        const formatCoverageAnnotationsMock = jest.mocked(formatCoverageAnnotations);
 
         beforeEach(() => {
             createCoverageAnnotationsMock.mockClear();
