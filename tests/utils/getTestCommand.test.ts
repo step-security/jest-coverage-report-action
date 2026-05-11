@@ -1,12 +1,11 @@
 import { TextEncoder } from 'util';
 
 import { exec } from '@actions/exec';
-import { mocked } from 'ts-jest/utils';
 
 import { getTestCommand } from '../../src/utils/getTestCommand';
 
 beforeEach(() => {
-    mocked(exec).mockClear();
+    jest.mocked(exec).mockClear();
 });
 
 describe('getTestCommand', () => {
@@ -57,7 +56,7 @@ describe('getTestCommand', () => {
     });
 
     it('should handle double hyphens when pnpm version is unknown', async () => {
-        mocked(exec).mockImplementation(() => {
+        jest.mocked(exec).mockImplementation(() => {
             return Promise.reject(new Error('Unknown failure'));
         });
 
@@ -83,7 +82,7 @@ describe('getTestCommand', () => {
     });
 
     it('should handle double hyphens for pnpm < 7.0.0', async () => {
-        mocked(exec).mockImplementation((command, _args, options) => {
+        jest.mocked(exec).mockImplementation((command, _args, options) => {
             if (command.trim() === 'pnpm -v' && options?.listeners?.stdout) {
                 options.listeners.stdout(
                     Buffer.from(new TextEncoder().encode('6.6.6'))
@@ -115,7 +114,7 @@ describe('getTestCommand', () => {
     });
 
     it('should handle double hyphens for pnpm >= 7.0.0', async () => {
-        mocked(exec).mockImplementation((command, _args, options) => {
+        jest.mocked(exec).mockImplementation((command, _args, options) => {
             if (command.trim() === 'pnpm -v' && options?.listeners?.stdout) {
                 options.listeners.stdout(
                     Buffer.from(new TextEncoder().encode('7.7.7'))

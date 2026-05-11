@@ -1,0 +1,19 @@
+[[IgnoredVulns]]
+id = "GHSA-2mjp-6q6p-2qxm"
+reason = "undici is used only as HTTP client for GitHub API via @actions/github and @actions/http-client. This smuggling attack requires user-controlled flat-array headers, which these libraries do not use."
+
+[[IgnoredVulns]]
+id = "GHSA-4992-7rv2-5pvq"
+reason = "undici is used only as HTTP client for GitHub API. This CRLF injection requires the 'upgrade' option which @actions/github and @actions/http-client do not use."
+
+[[IgnoredVulns]]
+id = "GHSA-g9mf-h72j-4rw9"
+reason = "undici is used only as HTTP client for GitHub API. This decompression bomb requires a malicious server; GitHub API is trusted and connections are over TLS."
+
+[[IgnoredVulns]]
+id = "GHSA-v9p9-hfj2-hcw8"
+reason = "undici is used only as HTTP client for GitHub API. This WebSocket DoS vulnerability is irrelevant as no WebSocket connections are made."
+
+[[IgnoredVulns]]
+id = "GHSA-vrm6-8vpv-qv8q"
+reason = "undici is used only as HTTP client for GitHub API. This WebSocket decompression bomb is irrelevant as no WebSocket connections are made."

@@ -1,13 +1,12 @@
 import { rm, rmdir } from 'fs-extra';
-import { mocked } from 'ts-jest/utils';
 
 import { removeDirectory } from '../../src/utils/removeDirectory';
 
 const originalProcess = process;
 
 beforeEach(() => {
-    mocked(rm).mockClear();
-    mocked(rmdir).mockClear();
+    jest.mocked(rm).mockClear();
+    jest.mocked(rmdir).mockClear();
 });
 
 afterEach(() => {
