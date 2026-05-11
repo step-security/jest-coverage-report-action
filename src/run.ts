@@ -1,8 +1,9 @@
+import * as fs from 'fs';
+
 import { setFailed, setOutput } from '@actions/core';
 import * as core from '@actions/core';
 import { context, getOctokit } from '@actions/github';
 import axios, { isAxiosError } from 'axios';
-import * as fs from 'fs';
 
 import { createCoverageAnnotations } from './annotations/createCoverageAnnotations';
 import { createFailedTestsAnnotations } from './annotations/createFailedTestsAnnotations';
@@ -303,8 +304,7 @@ async function validateSubscription(): Promise<void> {
     core.info('');
     core.info('[1;36mStepSecurity Maintained Action[0m');
     core.info(`Secure drop-in replacement for ${upstream}`);
-    if (repoPrivate === false)
-        core.info('[32m✓ Free for public repositories[0m');
+    if (repoPrivate === false) core.info('[32m✓ Free for public repositories[0m');
     core.info(`[36mLearn more:[0m ${docsUrl}`);
     core.info('');
 
@@ -324,9 +324,7 @@ async function validateSubscription(): Promise<void> {
             core.error(
                 `[1;31mThis action requires a StepSecurity subscription for private repositories.[0m`
             );
-            core.error(
-                `[31mLearn how to enable a subscription: ${docsUrl}[0m`
-            );
+            core.error(`[31mLearn how to enable a subscription: ${docsUrl}[0m`);
             process.exit(1);
         }
         core.info('Timeout or API not reachable. Continuing to next step.');
