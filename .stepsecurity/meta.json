@@ -1,0 +1,18 @@
+{
+   "schema_version": "1",
+   "onboarding_type": "copied",
+   "archived": false,
+   "maintained_action_name": "step-security/jest-coverage-report-action",
+   "upstream_full_repo_name": "artiomtr/jest-coverage-report-action",
+   "action_type": "node",
+   "last_release": {
+     "tag_name": "v2.3.5",
+     "created_at": "2026-05-11T08:34:10Z",
+     "published_at": "2026-05-11T16:18:47Z"
+   },
+   "sync": {
+     "ignore_presets": [
+       "defaults_v1"
+     ]
+   }
+ }
